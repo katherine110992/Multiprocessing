@@ -6,6 +6,7 @@ def f2(wordlist, mainwordlist, q):
     for mainword in mainwordlist:
         matches = difflib.get_close_matches(mainword,wordlist,len(wordlist),0.7)
         q.put(matches)
+    return
 
 
 def splitlist(inlist, chunksize):
@@ -37,7 +38,6 @@ if __name__ == '__main__':
     for submainwordlist in mainwordlistsplitted:
         print("sub")
         p = Process(target=f2, args=(wordlist,submainwordlist,q,))
-        p.Daemon = True
         all_processes.append(p)
         p.start()
     for p in all_processes:

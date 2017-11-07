@@ -3,6 +3,7 @@ from multiprocessing import Process, Queue
 
 def create_graph(number, vertex, nodes, queue):
     queue.put([number, vertex * nodes])
+    return
 
 if __name__ == '__main__':
     queue = Queue()
